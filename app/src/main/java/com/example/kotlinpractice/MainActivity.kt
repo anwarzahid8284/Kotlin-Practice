@@ -10,6 +10,9 @@ import android.widget.TextView
 import java.util.*
 
 class MainActivity : AppCompatActivity(){
+    companion object{
+        const val KEY_NAME="name";
+    }
     lateinit var editText: EditText
     lateinit var textView: TextView
     lateinit var button: Button
@@ -52,8 +55,12 @@ class MainActivity : AppCompatActivity(){
             textView.text = "Hello View $result"
         }
         buttonNextActivity.setOnClickListener{
-            val intent:Intent= Intent(applicationContext,SecondActivity::class.java)
-            startActivity(intent)
+           // val intent:Intent= Intent(applicationContext,SecondActivity::class.java)
+            val result : String= editText.text.toString()
+            textView.text = "Hello View $result"
+            startActivity(Intent(applicationContext,SecondActivity::class.java).putExtra(KEY_NAME,result))
+        }
+
         }
     }
 
@@ -75,4 +82,4 @@ class MainActivity : AppCompatActivity(){
         textView.text="Hello input $result"
 
     }*/
-}
+
